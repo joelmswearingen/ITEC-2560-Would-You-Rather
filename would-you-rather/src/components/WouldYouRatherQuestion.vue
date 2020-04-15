@@ -1,11 +1,12 @@
 <template>
   <div>
+    
+    <h2>Would you rather...</h2>
+    <h3>{{ question.question }}</h3>
 
-    <h2>{{ question.question }}</h2>
-
-    <input type="radio" v-model="choice" v-bind:value="answer1" v-on:click="userAnswerSelected(choice)">
+    <input type="radio" v-model="choice" v-bind:value="question.answer1" v-on:change="checked(choice)">
     <label>{{ question.answer1 }}</label>
-    <input type="radio" v-model="choice" v-bind:value="answer2" v-on:click="userAnswerSelected(choice)">
+    <input type="radio" v-model="choice" v-bind:value="question.answer2" v-on:change="checked(choice)">
     <label>{{ question.answer2 }}</label>
 
   </div>
@@ -20,15 +21,12 @@ export default {
     }
   }, 
   props: {
-    id: Number,
     question: Object,
-    answer1: String,
-    answer2: String,
-    answers: Array,
   },
   methods: {
-    userAnswerSelected(choice) {
-      this.$emit('choice-selected', choice)
+    checked(choice) {
+      let answer = { id: this.question.id, choice: this.choice }
+      this.$emit('answer-changed', answer)
     }
   },
 }

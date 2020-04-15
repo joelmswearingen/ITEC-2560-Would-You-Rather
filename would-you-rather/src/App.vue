@@ -6,14 +6,16 @@
       v-for="question in questions"
       v-bind:key="question.id"
       v-bind:question="question"
-      v-bind:choice="choice"
-      v-on:choice-selected="userAnswerSelected"
+      v-on:answer-changed="answerChanged"
     ></WouldYouRatherQuestion>
 
     <h2>You Would Rather...</h2>  
-    <div>
-        {{ userSelectionMessage }}            
-    </div>
+    <ul>
+        <li 
+          v-for="choice in choices"
+          v-bind:key="choice.id"
+        > {{ choice.choice }} </li>
+      </ul>
   </div>
 </template>
 
@@ -31,31 +33,31 @@ export default {
         {
           id: 0,
           question: '...be a reverse centaur or a reverse mermaid/merman?',
-          answer1: 'reverse centaur',
-          answer2: 'reverse mermaid/merman',
+          answer1: 'Be a reverse centaur',
+          answer2: 'Be a reverse mermaid/merman',
         },
         {
           id: 1,
           question: '...be raised by monkeys or by wolves?',
-          answer1: 'monkeys',
-          answer2: 'wolves',          
+          answer1: 'Be raised by monkeys',
+          answer2: 'Be raised by wolves',          
         },
         {
           id: 2,
           question: '...have hooves for feet or webbed fingers?',
-          answer1: 'hooves for feet',
-          answer2: 'webbed fingers',          
+          answer1: 'Have hooves for feet',
+          answer2: 'Have webbed fingers',          
         },
       ],
-      answers: [],
-      userSelectionMessage: '',
+      choices: [],
     }
   },
-  method: {
-    userAnswerSelected(choice) {
-      this.answers.push(choice)
+  methods: {
+    answerChanged(choice) {
+        this.choices.push(choice)       
+        // how to replace existing object where key exists?
+        // add sort?
     },
-
   },
 }
 </script>
