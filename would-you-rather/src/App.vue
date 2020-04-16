@@ -14,7 +14,7 @@
         <li 
           v-for="choice in choices"
           v-bind:key="choice.id"
-        >{{ choice.choice }}</li>
+        >{{ choice }}</li>
     </ul>
   </div>
 </template>
@@ -54,18 +54,21 @@ export default {
   },
   methods: {
     answerChanged(choice) {
-        this.choices.push(choice)  
+        let index = choice.id
+        this.choices[index] = choice.choice
+        this.$set(this.choices, index, choice.choice)
+
+        // this.choices.push(choice)  
         
-        this.choices.forEach(element => {
-          if element.id = choice.id
+        // this.choices.forEach(element => {
+        //   if element.id = choice.id
           
-        });
-        // how to replace existing object where key exists?
-        this.choices.sort(function(c1, c2) {
-          return c1.id > c2.id ? 1 : -1 
-        })
+        // });
+        // // how to replace existing object where key exists?
+        // this.choices.sort(function(c1, c2) {
+        //   return c1.id > c2.id ? 1 : -1 
+        }
     },
-  },
 }
 </script>
 
