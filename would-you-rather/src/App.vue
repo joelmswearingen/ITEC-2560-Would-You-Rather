@@ -14,8 +14,9 @@
         <li 
           v-for="choice in choices"
           v-bind:key="choice.id"
+          v-on:choice-present="answerChanged(choice)"
         > {{ choice.choice }} </li>
-      </ul>
+    </ul>
   </div>
 </template>
 
@@ -40,13 +41,13 @@ export default {
           id: 1,
           question: '...be raised by monkeys or by wolves?',
           answer1: 'Be raised by monkeys',
-          answer2: 'Be raised by wolves',          
+          answer2: 'Be raised by wolves',        
         },
         {
           id: 2,
           question: '...have hooves for feet or webbed fingers?',
           answer1: 'Have hooves for feet',
-          answer2: 'Have webbed fingers',          
+          answer2: 'Have webbed fingers', 
         },
       ],
       choices: [],
@@ -56,7 +57,9 @@ export default {
     answerChanged(choice) {
         this.choices.push(choice)       
         // how to replace existing object where key exists?
-        // add sort?
+        this.choices.sort(function(c1, c2) {
+          return c1.id > c2.id ? 1 : -1 
+        })
     },
   },
 }
