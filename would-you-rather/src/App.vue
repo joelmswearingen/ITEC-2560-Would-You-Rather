@@ -14,8 +14,7 @@
         <li 
           v-for="choice in choices"
           v-bind:key="choice.id"
-          v-on:choice-present="answerChanged(choice)"
-        > {{ choice.choice }} </li>
+        >{{ choice.choice }}</li>
     </ul>
   </div>
 </template>
@@ -55,7 +54,12 @@ export default {
   },
   methods: {
     answerChanged(choice) {
-        this.choices.push(choice)       
+        this.choices.push(choice)  
+        
+        this.choices.forEach(element => {
+          if element.id = choice.id
+          
+        });
         // how to replace existing object where key exists?
         this.choices.sort(function(c1, c2) {
           return c1.id > c2.id ? 1 : -1 
@@ -67,5 +71,49 @@ export default {
 
 
 <style>
+body {
+  background-color: aliceblue;
+  border: 0;
+  margin: 15px;
+  padding: 10px;
+}
+
+h1, h2 {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 45px;
+  font-style: italic;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 35px;
+  margin-top: 20px;
+}
+
+input {
+  margin-left: 35px;
+}
+
+label {
+  margin-left: 5px;
+}
+
+ul {
+  margin: auto;
+  padding: 0;
+  text-align: center;
+  width: 50%;
+}
+
+li {
+  color: darkslateblue;
+  display: block;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: large;
+  font-style: italic;
+  width: auto;
+}
 
 </style>

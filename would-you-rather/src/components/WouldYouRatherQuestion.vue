@@ -33,6 +33,20 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
+h2 {
+  color: darkslateblue;  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: x-large;
+  font-style: italic;
+  margin: 0;
+  padding: 20px 25px 10px 5px;
+  text-align: left;
+}
 
+h3 {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin: 0;
+  padding: 5px 15px;
+}
 </style>
